@@ -14,14 +14,23 @@
 
 
 </head>
-
+<style>
+    a-scene {
+  height: 300px;
+  width: 600px;
+}
+#myEmbeddedScene {
+    height: 320px;
+  width: 620px;
+}
+</style>
 <body>
     <!--<div class="container">
         <h1>Hello World</h1>
         <p>I'm hosted with GitHub Pages.</p>
         -->
-    <section>
-        <a-scene stats loading-screen="dotsColor: red; backgroundColor: black" fog="type: linear; color: #8FC0A9">
+    <div id="myEmbeddedScene">
+        <a-scene embedded stats loading-screen="dotsColor: red; backgroundColor: black" fog="type: linear; color: #8FC0A9">
             <a-assets>
                 <!--
                         insert here things to preload on site
@@ -65,7 +74,7 @@
             <a-cylinder id="ground" src="#groundTexture" radius="32" height="0.1"></a-cylinder>
             <a-sky color="#ECECEC"></a-sky>
         </a-scene>
-    </section>
+    </div>
     <!--</div>
     -->
 </body>
