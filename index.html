@@ -45,6 +45,7 @@
                     
                     <a-asset-item id="sad_dog-obj" src="models\test_model1\cagnolinoTriste.obj"></a-asset-item>
                     -->
+                <img id="sofaTexture" src="textures\sofa_02_16-bit_Diffuse.png">
                 <a-asset-item id="avatar-glb" src="models\test_model2\avatar.glb"></a-asset-item>
                 <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
             </a-assets>
@@ -70,6 +71,7 @@
             <!-- Blue point light, 5 meters in the air. -->
             <a-light type="point" color="#BAE8E5" position="20 5 0"></a-light>
 
+            <a-box position="-1 0.5 -10" rotation="0 30 0" src="#sofaTexture"></a-box>
 
             <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
             <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
