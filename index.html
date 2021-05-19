@@ -208,9 +208,9 @@
                     controllers
                 -->
                                 <a-entity id="teleHand" oculus-touch-controls="hand: left"
-                                    teleport-controls="type: parabolic; collisionEntities: [mixin='voxel'], #ground" logThumbstick logControllerButtons>
+                                    teleport-controls="type: parabolic; collisionEntities: [mixin='voxel'], #ground" logThumbstick logControllerButtons line="color: #118A7E"  raycaster="objects: .raycastable">
                                 </a-entity>
-                                <a-entity oculus-touch-controls="hand: right" logThumbstick logControllerButtons></a-entity>
+                                <a-entity oculus-touch-controls="hand: right" logThumbstick logControllerButtons  raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
                                 <!-- Dim ambient lighting. -->
                                 <a-light type="ambient" color="#FAF3DD"></a-light>
                                 <!--
