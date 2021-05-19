@@ -64,7 +64,26 @@
         }
     }
 </style>
-
+<script>
+    AFRAME.registerComponent('thumbstick-logging',{
+    init: function () {
+      this.el.addEventListener('thumbstickmoved', this.logThumbstick);
+      this.el.addEventListener('pressingbuttons', this.logControllerButtons);
+    },
+    logThumbstick: function (evt) {
+      if (evt.detail.y > 0.95) { console.log("DOWN"); }
+      if (evt.detail.y < -0.95) { console.log("UP"); }
+      if (evt.detail.x < -0.95) { console.log("LEFT"); }
+      if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+    },
+    logControllerButtons: function (evt) {
+      if (evt.detail.abuttondown = true) { console.log("A"); }
+      if (evt.detail.bbuttondown = true) { console.log("B"); }
+      if (evt.detail.xbuttondown = true) { console.log("X"); }
+      if (evt.detail.ybuttondown = true) { console.log("Y"); }
+    }
+  });
+  </script>
 <body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -188,9 +207,9 @@
                     controllers
                 -->
                                 <a-entity id="teleHand" oculus-touch-controls="hand: left"
-                                    teleport-controls="type: parabolic; collisionEntities: [mixin='voxel'], #ground">
+                                    teleport-controls="type: parabolic; collisionEntities: [mixin='voxel'], #ground" logThumbstick logControllerButtons>
                                 </a-entity>
-                                <a-entity oculus-touch-controls="hand: right"></a-entity>
+                                <a-entity oculus-touch-controls="hand: right" logThumbstick logControllerButtons></a-entity>
                                 <!-- Dim ambient lighting. -->
                                 <a-light type="ambient" color="#FAF3DD"></a-light>
                                 <!--
