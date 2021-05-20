@@ -36,8 +36,9 @@
         },false)
 
         async function startCapture() {
+            let captureStream = null;
             try {
-                videoElement.srcObject = await navigator.mediaDevices.getUserMedia(displayMediaOptions)
+                videoElement.srcObject = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
 
             } catch (err) {
                 console.error("Error" + err)

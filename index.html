@@ -189,6 +189,10 @@
                         <p>The following viewport is WebXR based on AFrame and other frameworks.</p>
                     </div>
                     <div class="row">
+                        <button id="start">Start Capture</button>
+<button id="stop">Stop Capture</button>
+                    </div>
+                    <div class="row">
                         <div id="myEmbeddedScene" class="container">
                             <a-scene embedded environment background="color: #212"
                                 cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable"
@@ -207,6 +211,7 @@
                                     <a-asset-item id="sketchup-glb" src="models\test_model3\test_sketchup_Untitled.gltf"
                                         crossorigin="anonymous"></a-asset-item>
                                     <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+                                    <video id="video" autoplay></video>
                                 </a-assets>
                                 <!--
                     controllers
@@ -230,7 +235,8 @@
                                 </a-entity>
 
                                 <a-entity position="-5 0 5" rotation="0 -45 0" gltf-model="#sketchup-glb"></a-entity>
-
+                                
+                                <a-video src="#video" width="16" height="9" position="10 1 -20" rotation="0 30 0"></a-video>
 
                                 <!-- Blue point light, 5 meters in the air. -->
                                 <a-light type="point" color="#F0F2E8" position="0 5 0"></a-light>
@@ -274,7 +280,45 @@
     <p class="float-end"><a href="#">Back to top</a></p>
     <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>
--->
+-->    
+
+<script>
+    const videoElement = document.getElementById("video")
+    const start = document.getElementById("start")
+    const stop = document.getElementById("stop")
+
+    var displayMediaOptions = {
+        video: {
+            cursor: 'always'
+
+        },
+        audio: false
+    }
+
+    start.addEventListener("click", function (e) {
+        startCapture()
+    },false)
+    stop.addEventListener("click", function (e) {
+        stopCapture()
+    },false)
+
+    async function startCapture() {
+        let captureStream = null;
+        try {
+            videoElement.srcObject = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+
+        } catch (err) {
+            console.error("Error" + err)
+        }
+
+    }
+    function stopCapture(e){
+        let tracks = videoElement.srcObject.getTracks()
+        tracks.forEach(track => track.stop() )
+        videoElement.srcObject = null
+    }
+
+</script>
 </body>
 
 </html>
