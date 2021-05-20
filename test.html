@@ -1,0 +1,51 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>capture screen</title>
+</head>
+
+<body>
+    <h1>Hi we can try to capure</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi cum unde eius dicta inventore sunt enim
+        obcaecati, alias, tempora doloribus temporibus excepturi! Neque doloremque a in expedita eveniet optio
+        voluptates?</p>
+    <button id="start">Start Capture</button>
+    <button id="stop">Stop Capture</button>
+    <video id="video" autoplay></video>
+    <script>
+        const videoElement = document.getElementById("video")
+        const start = document.getElementById("start")
+        const stop = document.getElementById("stop")
+
+        var displayMediaOptions = {
+            video: {
+                cursor: 'always'
+
+            },
+            audio: false
+        }
+
+        start.addEventListener("click", function (e) {
+            startCapture()
+        })
+        stop.addEventListener("click", function (e) {
+            stopCapture()
+        })
+
+        async function startCapture() {
+            try {
+                videoElement.srcObject = await navigator.mediaDevices.getUserMedia(displayMediaOptions)
+
+            } catch (err) {
+                console.error("Error" + err)
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
