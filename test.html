@@ -30,10 +30,10 @@
 
         start.addEventListener("click", function (e) {
             startCapture()
-        })
+        },false)
         stop.addEventListener("click", function (e) {
             stopCapture()
-        })
+        },false)
 
         async function startCapture() {
             try {
@@ -43,6 +43,11 @@
                 console.error("Error" + err)
             }
 
+        }
+        function stopCapture(e){
+            let tracks = videoElement.srcObject.getTracks()
+            tracks.forEach(track => track.stop() )
+            videoElement.srcObject = null
         }
 
     </script>
