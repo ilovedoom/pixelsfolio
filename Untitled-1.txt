@@ -1,0 +1,11 @@
+<div id="msg-${totalMessages}" class="message-row" data-sender="${uid}" data-msgid="${msgId}">
+    <div id="meta">
+      <div id="username" class="${actionClass}">${username}</div>
+      <div class="badgs">
+      	<span class="badges">${badges}</span>
+      </div>
+    </div>
+    <div id="message" class="msg ${actionClass}">
+      ${message}
+    </div>
+</div>
